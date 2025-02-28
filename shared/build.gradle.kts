@@ -58,16 +58,28 @@ android {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "sg.rently.shared"
+            groupId = "com.github.DaniPix"
             artifactId = "rentlyshared"
             version = "0.0.1"
 
             from(components["kotlin"])
-        }
-    }
-    repositories {
-        maven {
-            url = uri("https://your.maven.repo/repository/maven-releases/")
+            pom {
+                name.set("SharedLogic")
+                description.set("A Kotlin Multiplatform shared library for API consumption and database operations.")
+                url.set("https://github.com/<your-github-username>/<your-repo-name>")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/DaniPix/RentlyShared.git")
+                    developerConnection.set("scm:git:ssh://github.com/DaniPix/RentlyShared.git")
+                    url.set("https://github.com/DaniPix/RentlyShared.git")
+                }
+            }
         }
     }
 }
